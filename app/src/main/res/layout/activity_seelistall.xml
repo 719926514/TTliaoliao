@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view_my_study3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.work.mtmessenger.widgets.xlistview.MyGridView
+            android:id="@+id/gv_my_wallet_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="2dp"
+            android:listSelector="@color/transparent"
+            android:numColumns="5"
+            android:padding="10dp"
+            android:scrollbars="none"
+            android:verticalSpacing="2dp">
+
+        </com.work.mtmessenger.widgets.xlistview.MyGridView>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

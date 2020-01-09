@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/beijing"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/menu_rb_group"
+                android:layout_width="fill_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="1dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableTop="@drawable/shouye_btn1_select"
+                    android:gravity="center"
+                    android:text="聊天"
+                    android:textColor="@color/bai_hui_textcolor"
+                    android:textSize="12dp" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableTop="@drawable/shouye_btn2_select"
+                    android:gravity="center"
+                    android:text="联系人"
+                    android:textColor="@color/bai_hui_textcolor"
+                    android:textSize="12dp" />
+
+
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableTop="@drawable/shouye_btn3_select"
+                    android:gravity="center"
+                    android:text="我的"
+                    android:textColor="@color/bai_hui_textcolor"
+                    android:textSize="12dp" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_unRead"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_badge_red"
+            android:gravity="center"
+            android:text="99"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/tv_unRead_message"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignRight="@+id/tv_unRead"
+           android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_badge_red"
+            android:gravity="center"
+            android:text="99"
+            android:textColor="@color/white"
+            android:textSize="8sp" />
+    </RelativeLayout>
+</TabHost>

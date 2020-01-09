@@ -1,0 +1,40 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.yangfuhai.asimplecachedemo.test" >
+4
+5    <uses-sdk
+5-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:5:5-74
+6        android:minSdkVersion="14"
+6-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:5:15-41
+7        android:targetSdkVersion="25" />
+7-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:5:42-71
+8
+9    <instrumentation
+9-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:11:5-15:85
+10        android:name="android.support.test.runner.AndroidJUnitRunner"
+10-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:11:22-83
+11        android:functionalTest="false"
+11-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:14:22-52
+12        android:handleProfiling="false"
+12-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:13:22-53
+13        android:label="Tests for com.yangfuhai.asimplecachedemo.test"
+13-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:15:22-83
+14        android:targetPackage="com.yangfuhai.asimplecachedemo.test" />
+14-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:12:22-81
+15
+16    <application
+16-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:7:5-9:19
+17        android:allowBackup="true"
+17-->[__tested_artifact__::asimpleCacheDemo] D:\Demol\mt\asimpleCacheDemo\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:9-35
+18        android:debuggable="true"
+18-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:7:18-43
+19        android:label="@string/app_name"
+19-->[__tested_artifact__::asimpleCacheDemo] D:\Demol\mt\asimpleCacheDemo\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:9-41
+20        android:supportsRtl="true" >
+20-->[__tested_artifact__::asimpleCacheDemo] D:\Demol\mt\asimpleCacheDemo\build\intermediates\library_manifest\debug\AndroidManifest.xml:40:9-35
+21        <uses-library android:name="android.test.runner" />
+21-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:8:9-60
+21-->D:\Demol\mt\asimpleCacheDemo\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1214843001147264546.xml:8:23-57
+22    </application>
+23
+24</manifest>

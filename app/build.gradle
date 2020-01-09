@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.work.mtmessenger"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfigs {
+            //debug包
+            debug {
+                storeFile file("D:\\Demol\\mt\\app\\jks.jks")
+                storePassword '123456'
+                keyAlias '123456'
+                keyPassword '123456'
+            }
+            //release包
+            release {
+                storeFile file("D:\\Demol\\mt\\app\\jks.jks")
+                storePassword '123456'
+                keyAlias '123456'
+                keyPassword '123456'
+            }
+        }
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "5eda700d3eb5f5129c7e967b",//值来自开发者平台取得的AppKey
+                JPUSH_CHANNEL: "default_developer",
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+
+
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+
+        }
+
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(':promptlibrary')
+    implementation project(':asimpleCacheDemo')
+    //绑定view
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    //微信sdk
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //滑动开关按钮
+    compile 'com.github.zcweng:switch-button:0.0.3@aar'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    implementation 'com.android.support:recyclerview-v7:28.0.0-alpha1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.lovedise:permissiongen:0.0.6'
+    implementation 'org.clojars.cbilson:pinyin4j:2.5.0'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.github.0xZhangKe:WebSocketDemo:3.0.1'
+    implementation files('libs/android-async-http-1.4.3.jar')
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation files('libs/jpush-android-3.5.4.jar')
+
+
+    compile 'com.apkfuns.logutils:library:1.2.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.facebook.rebound:rebound:0.3.8'
+
+}

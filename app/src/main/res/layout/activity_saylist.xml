@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:background="@color/beijing"
+        android:orientation="vertical">
+
+        <com.work.mtmessenger.widgets.xlistview.XListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="51dp"
+            android:background="@color/beijing"
+            android:divider="@color/beijing"
+            android:dividerHeight="0dp">
+
+        </com.work.mtmessenger.widgets.xlistview.XListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="1dp"
+                android:background="#f9f9f9"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <TextView
+                    android:id="@+id/ic_go_yuyin"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/yuying" />
+
+                <EditText
+                    android:id="@+id/et_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/chatform_textinput_shape"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:id="@+id/ic_go_wenzi"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/jianpan"
+                   android:visibility="gone"/>
+
+                <com.work.mtmessenger.widgets.xlistview.manage.AudioRecorderButton
+                    android:id="@+id/id_recorder_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_recorder_normal"
+                    android:gravity="center"
+                    android:minHeight="0dp"
+                    android:text="@string/str_recorder_normal"
+                    android:textColor="#727272"
+                    android:layout_weight="1"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/addmor"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/tianjia" />
+
+                <TextView
+                    android:id="@+id/send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_btn_gren"
+                    android:gravity="center"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:text="发送"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_no_data"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

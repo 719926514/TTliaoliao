@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:id="@+id/ll_12">
+
+    <include layout="@layout/include_title_bar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="#ffffff"
+                android:divider="#ffffff"
+                android:dividerHeight="0dp">
+
+            </ListView>
+
+            <ListView
+                android:id="@+id/list2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="#ffffff"
+                android:divider="#ffffff"
+                android:dividerHeight="0dp">
+
+            </ListView>
+            <TextView
+                android:id="@+id/tv_no_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffffff"
+                android:gravity="center"
+                android:text="您还没有数据"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/d123"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-8dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/abc"
+           android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ll_123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/d123"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-6dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_btn_gray"
+            android:orientation="vertical"
+            android:padding="20dp"
+         android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_jiaqun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/jiaqun"
+                android:drawablePadding="8dp"
+                android:text="发起群聊"
+                android:textColor="@color/white"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray7"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_jiaren"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/jiaren"
+                android:drawablePadding="8dp"
+                android:text="添加朋友"
+                android:textColor="@color/white"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

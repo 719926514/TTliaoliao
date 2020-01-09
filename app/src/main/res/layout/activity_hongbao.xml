@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <include layout="@layout/include_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/etmoney"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_btn_whit"
+            android:paddingRight="30dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:hint="红包金额"
+           android:textColor="@color/textmaxtile" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="元"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/textmaxtile"
+            android:layout_marginRight="10dp"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_btn_whit"
+            android:paddingRight="30dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:hint="红包个数"
+            android:textColor="@color/textmaxtile" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_btn_whit"
+            android:paddingRight="30dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:hint="请输入支付密码"
+            android:textColor="@color/textmaxtile" />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_go"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="塞钱进红包"
+       android:background="@drawable/bg_btn_red"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+</LinearLayout>

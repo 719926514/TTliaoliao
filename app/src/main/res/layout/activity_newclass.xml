@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2f2"
+    android:orientation="vertical"
+    android:id="@+id/ll_12">
+
+    <include layout="@layout/include_title_bar" />
+
+        <EditText
+            android:id="@+id/et_context"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入群名称"
+            android:background="@drawable/bg_btn_whit"
+            android:padding="10dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="50dp" />
+
+        <TextView
+            android:id="@+id/total_size"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/recyclerView"
+            android:gravity="center"
+            android:text="0位联系人" />
+
+        <com.work.mtmessenger.util.SideBar
+            android:id="@+id/sideBar"
+            android:layout_width="33dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="50dp" />
+    </RelativeLayout>
+</LinearLayout>

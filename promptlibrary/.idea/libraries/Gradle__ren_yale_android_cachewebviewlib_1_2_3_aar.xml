@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: ren.yale.android:cachewebviewlib:1.2.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/cachewebviewlib-1.2.3.aar/926e33816ce26e90201b71b89259fc6b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/cachewebviewlib-1.2.3.aar/926e33816ce26e90201b71b89259fc6b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ren.yale.android/cachewebviewlib/1.2.3/24852fd2a5b0338057b626a496a4a2f0b973126b/cachewebviewlib-1.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

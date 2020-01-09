@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main">
+
+        <ImageView
+            android:id="@+id/iv_go_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/common_nav_left"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+
+        <EditText
+            android:id="@+id/ed_title_column"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="100dp"
+            android:background="#B8B2FF"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/main"
+            android:textColorHint="@color/main"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_title_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#B8B2FF"
+            android:drawableLeft="@drawable/sousuo"
+            android:drawablePadding="10dp"
+            android:enabled="false"
+            android:text="输入用户名添加好友"
+            android:textColor="@color/main"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_right_action"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:minWidth="56dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="收索"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_right_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_add"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#ffffffff"
+        android:gravity="center"
+        android:text="暂无此用户"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:divider="#ffffff"
+        android:dividerHeight="0dp"
+        android:visibility="gone"></ListView>
+
+
+</LinearLayout>
