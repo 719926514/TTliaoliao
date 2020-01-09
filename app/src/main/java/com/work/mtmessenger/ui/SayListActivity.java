@@ -185,7 +185,7 @@ public class SayListActivity extends BaseActivity {
                         }
 
                     }
-                }, 1100);
+                }, 1000);
             }
 
             @Override
