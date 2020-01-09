@@ -135,8 +135,6 @@ public class SayListActivity extends BaseActivity {
     private CommonSelectorDialog commonSelectorDialog;
     private boolean shuaxin = true;
     public static boolean mIsListViewIdle= true;
-    private ImageInfoObj imageInfoObj;
-    private ImageWidgetInfoObj imageWidgetInfoObj;
     private Trycod trycod;
 
     @Override
@@ -333,7 +331,7 @@ public class SayListActivity extends BaseActivity {
             }
         });
 
-//长按撤回
+        //长按撤回
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int messages_id, long l) {

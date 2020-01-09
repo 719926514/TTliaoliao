@@ -53,7 +53,7 @@
 
         <com.work.mtmessenger.util.SideBar
             android:id="@+id/sideBar"
-            android:layout_width="33dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="50dp" />

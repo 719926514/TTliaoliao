@@ -122,12 +122,10 @@
         <activity android:name=".ui.myactivity.MoRenActivity" />
         <activity android:name=".ui.myactivity.MoRen2Activity" />
         <activity android:name=".ui.myactivity.TouSuActivity" />
-
         <!--联系人-->
         <activity android:name=".ui.LiaisonManActivity" />
         <!--新建群-->
         <activity android:name=".ui.NewclassActivity" />
-
         <!-- 群聊列表-->
         <activity android:name=".ui.QunliaolistActivity" />
         <!--        查看群聊-->
@@ -143,8 +141,6 @@
         <activity android:name=".ui.MymoneyActivity" />
         <activity android:name=".ui.PaypassActivity" />
         <activity android:name=".ui.howImageActivity" />
-
-
         <!--登录-注册/忘记密码-->
         <activity android:name=".ui.login.RegisterActivity" />
 

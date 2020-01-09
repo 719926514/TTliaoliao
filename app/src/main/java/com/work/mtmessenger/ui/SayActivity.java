@@ -9,13 +9,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.widget.NestedScrollView;
 
 import com.google.gson.Gson;
 import com.work.mtmessenger.MyApp;
@@ -32,6 +37,7 @@ import com.work.mtmessenger.ui.login.BaseActivity;
 import com.work.mtmessenger.ui.myactivity.SetActivity;
 import com.work.mtmessenger.util.StatusBarUtil;
 import com.work.mtmessenger.util.ToastUtil;
+import com.work.mtmessenger.widgets.xlistview.ListViewForScrollView;
 import com.zhangke.websocket.SimpleListener;
 import com.zhangke.websocket.SocketListener;
 import com.zhangke.websocket.WebSocketHandler;
@@ -71,9 +77,9 @@ public class SayActivity extends BaseActivity {
     @BindView(R.id.iv_right_action)
     ImageView ivRightAction;
     @BindView(R.id.list)
-    ListView list;
+    ListViewForScrollView list;
     @BindView(R.id.list2)
-    ListView list2;
+    ListViewForScrollView list2;
     @BindView(R.id.tv_no_data)
     TextView tvNoData;
     @BindView(R.id.iv_go_back)
@@ -138,9 +144,6 @@ public class SayActivity extends BaseActivity {
         }
 
 
-        list.setVerticalScrollBarEnabled(false);
-        list2.setVerticalScrollBarEnabled(false);
-
         acache = ACache.get(this);//创建ACache组件
         isshenyin = acache.getAsString("shenyin");//从缓存中取数据
         if (isshenyin == null) {
@@ -154,9 +157,10 @@ public class SayActivity extends BaseActivity {
 
         listViewAdapter3 = new MessgListViewAdapter(SayActivity.this, R.layout.vw_list_item, listBean);
         list.setAdapter(listViewAdapter3);
-
+        setListViewHeightBasedOnChildren(list);
         listViewAdapter4 = new MessgListViewAdapter2(SayActivity.this, R.layout.vw_list_item, listBean2);
         list2.setAdapter(listViewAdapter4);
+        setListViewHeightBasedOnChildren(list2);
 
         String cacheData = acache.getAsString("newsaylist");//从缓存中取数据
         if (cacheData != null) {
@@ -167,6 +171,7 @@ public class SayActivity extends BaseActivity {
                 }
 
                 listViewAdapter3.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(list);
             }
 
             if (st.getData().getGroup_unread_array().size() > 0) {
@@ -174,6 +179,7 @@ public class SayActivity extends BaseActivity {
                     listBean2.add(st.getData().getGroup_unread_array().get(i));
                 }
                 listViewAdapter4.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(list2);
             }
         }
 
@@ -195,7 +201,8 @@ public class SayActivity extends BaseActivity {
                 //消息数量
                 deletemg(target_id, target_type);
 
-
+                listViewAdapter3.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(list);
             }
         });
 
@@ -215,7 +222,8 @@ public class SayActivity extends BaseActivity {
                 //消息数量
                 deletemg(target_id, target_type);
                 listBean2.get(position).setUnread_array(0);
-
+                listViewAdapter4.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(list2);
             }
         });
 
@@ -233,7 +241,6 @@ public class SayActivity extends BaseActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-
                 Gson gson = new Gson();
                 if (msg.contains("onConnected")) {
                 } else if (msg.contains("onDisconnect")) {
@@ -249,6 +256,7 @@ public class SayActivity extends BaseActivity {
                         groupUnreadArray1.setSend_head_url(groupUnreadArray.getData().getGroup_head_url());
                         listBean2.add(groupUnreadArray1);
                         listViewAdapter4.notifyDataSetChanged();
+                        setListViewHeightBasedOnChildren(list2);
                     } else if (msg.contains("\"event_id\":10007")) {
                         tuisong = gson.fromJson(msg, Tuisong.class);
                         if (tuisong.getData().getTarget_type() == 1) {
@@ -279,7 +287,7 @@ public class SayActivity extends BaseActivity {
                                 listBean.add(friendUnreadArrayBean);
                             }
                             listViewAdapter3.notifyDataSetChanged();
-
+                            setListViewHeightBasedOnChildren(list);
 
                             if (!(isshenyin.equals("2"))) {
                                 //语音提示
@@ -318,6 +326,7 @@ public class SayActivity extends BaseActivity {
                                 }
                                 listBean2.add(groupUnreadArray);
                             }
+                            setListViewHeightBasedOnChildren(list2);
                             listViewAdapter4.notifyDataSetChanged();
                         }
 
@@ -348,7 +357,7 @@ public class SayActivity extends BaseActivity {
                     }
 
                     listViewAdapter4.notifyDataSetChanged();
-
+                    setListViewHeightBasedOnChildren(list2);
                 } else {
                     nodata = gson.fromJson(msg, Nodata.class);
                     ToastUtil.show(SayActivity.this, nodata.getTips());
@@ -484,5 +493,31 @@ public class SayActivity extends BaseActivity {
         startActivity(intent);
 
     }
+
+
+    /**
+     * scrollview嵌套listview显示不全解决
+     *
+     * @param listView
+     */
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight
+                + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
+
 
 }

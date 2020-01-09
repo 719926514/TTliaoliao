@@ -63,12 +63,8 @@ public class SayListAdapter extends BaseAdapter {
         }
         final ViewHolder holder;
         if (convertView == null) {
-//            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            convertView = inflater.inflate(R.layout.item_saylist, null);
-
             convertView = mInflater.inflate(R.layout.item_saylist, parent, false);
             holder = new ViewHolder();
-
             holder.myiv_phot1 = (MyImage) convertView.findViewById(R.id.myiv_phot1);
             holder.myiv_phot2 = (MyImage) convertView.findViewById(R.id.myiv_phot2);
             holder.iv_icn1 = (MyImage) convertView.findViewById(R.id.iv_icn1);
