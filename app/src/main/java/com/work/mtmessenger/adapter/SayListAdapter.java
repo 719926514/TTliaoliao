@@ -92,97 +92,104 @@ public class SayListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         try {
-            //只有ListView处于空闲状态才能加载数据
-            if (SayListActivity.mIsListViewIdle) {
-                if (list.get(position).isIs_me()) {
-                    //自己的
-                    holder.ll_ziji.setVisibility(View.VISIBLE);
-                    holder.ll_bieren.setVisibility(View.GONE);
-                    //1文本  2图片 3语音  4红包 5系统
-                    if (list.get(position).getValue_type() == 1) {
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.tv_content2.setVisibility(View.VISIBLE);
-                        holder.tv_content2.setText(list.get(position).getValue());
-                        holder.tv_content2.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_btn_gren));
-                        holder.id_recorder_anim1.setVisibility(View.GONE);
-                        holder.id_recorder_time1.setVisibility(View.GONE);
-                        holder.iv_icn2.setVisibility(View.GONE);
-                    } else if (list.get(position).getValue_type() == 2) {
-                        holder.tv_sym.setVisibility(View.GONE);
+
+
+            if (list.get(position).isIs_me()) {
+                //自己的
+                holder.ll_ziji.setVisibility(View.VISIBLE);
+                holder.ll_bieren.setVisibility(View.GONE);
+                //1文本  2图片 3语音  4红包 5系统
+                if (list.get(position).getValue_type() == 1) {
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.tv_content2.setVisibility(View.VISIBLE);
+                    holder.tv_content2.setText(list.get(position).getValue());
+                    holder.tv_content2.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_btn_gren));
+                    holder.id_recorder_anim1.setVisibility(View.GONE);
+                    holder.id_recorder_time1.setVisibility(View.GONE);
+                    holder.iv_icn2.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 2) {//只有ListView处于空闲状态才能加载数据
+                    holder.tv_sym.setVisibility(View.GONE);
+                    if (SayListActivity.mIsListViewIdle) {
                         holder.iv_icn2.setVisibility(View.VISIBLE);
                         holder.iv_icn2.setImageURL(list.get(position).getValue());
-                        holder.id_recorder_anim1.setVisibility(View.GONE);
-                        holder.tv_content2.setVisibility(View.GONE);
-                        holder.id_recorder_time1.setVisibility(View.GONE);
-                    } else if (list.get(position).getValue_type() == 3) {
-                        String s = MediaMetadataRetriever.getRingDuring(list.get(position).getValue());
-                        int i = Integer.valueOf(s);
-                        i = i / 1000;
-                        holder.id_recorder_time1.setText(i + "");
-                        holder.id_recorder_time1.setVisibility(View.VISIBLE);
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.id_recorder_anim1.setVisibility(View.VISIBLE);
-                        holder.tv_content2.setVisibility(View.GONE);
-                        holder.iv_icn2.setVisibility(View.GONE);
-                    } else if (list.get(position).getValue_type() == 4) {
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.id_recorder_time1.setVisibility(View.GONE);
-                        holder.iv_icn2.setVisibility(View.GONE);
-                        holder.tv_content2.setVisibility(View.VISIBLE);
-                        holder.tv_content2.setText("");
-                        holder.id_recorder_anim1.setVisibility(View.GONE);
+                    }
+                    holder.id_recorder_anim1.setVisibility(View.GONE);
+                    holder.tv_content2.setVisibility(View.GONE);
+                    holder.id_recorder_time1.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 3) {
+                    String s = MediaMetadataRetriever.getRingDuring(list.get(position).getValue());
+                    int i = Integer.valueOf(s);
+                    i = i / 1000;
+                    holder.id_recorder_time1.setText(i + "");
+                    holder.id_recorder_time1.setVisibility(View.VISIBLE);
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.id_recorder_anim1.setVisibility(View.VISIBLE);
+                    holder.tv_content2.setVisibility(View.GONE);
+                    holder.iv_icn2.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 4) {
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.id_recorder_time1.setVisibility(View.GONE);
+                    holder.iv_icn2.setVisibility(View.GONE);
+                    holder.tv_content2.setVisibility(View.VISIBLE);
+                    holder.tv_content2.setText("");
+                    holder.id_recorder_anim1.setVisibility(View.GONE);
+                    if (SayListActivity.mIsListViewIdle) {//只有ListView处于空闲状态才能加载数据
                         if (list.get(position).getValue().contains("true")) {
                             holder.tv_content2.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.hong2));
                         } else {
                             holder.tv_content2.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.hong));
                         }
-                    } else if (list.get(position).getValue_type() == 5) {
-                        holder.id_recorder_time1.setVisibility(View.GONE);
-                        holder.tv_sym.setVisibility(View.VISIBLE);
-                        holder.tv_sym.setText(list.get(position).getValue());
-                        holder.tv_content2.setVisibility(View.GONE);
-                        holder.id_recorder_anim1.setVisibility(View.GONE);
-                        holder.iv_icn2.setVisibility(View.GONE);
                     }
-                } else {
-                    //别人的
-                    holder.ll_ziji.setVisibility(View.GONE);
-                    holder.ll_bieren.setVisibility(View.VISIBLE);
-                    //1文本  2图片 3语音 4红包 5系统
-                    if (list.get(position).getValue_type() == 1) {
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.tv_content1.setText(list.get(position).getValue());
-                        holder.id_recorder_anim.setVisibility(View.GONE);
-                        holder.tv_content1.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_btn_whit));
-                        holder.id_recorder_time.setVisibility(View.GONE);
-                        holder.iv_icn1.setVisibility(View.GONE);
-                        holder.tv_content1.setVisibility(View.VISIBLE);
+                } else if (list.get(position).getValue_type() == 5) {
+                    holder.id_recorder_time1.setVisibility(View.GONE);
+                    holder.tv_sym.setVisibility(View.VISIBLE);
+                    holder.tv_sym.setText(list.get(position).getValue());
+                    holder.tv_content2.setVisibility(View.GONE);
+                    holder.id_recorder_anim1.setVisibility(View.GONE);
+                    holder.iv_icn2.setVisibility(View.GONE);
+                }
+            } else {
+                //别人的
+                holder.ll_ziji.setVisibility(View.GONE);
+                holder.ll_bieren.setVisibility(View.VISIBLE);
+                //1文本  2图片 3语音 4红包 5系统
+                if (list.get(position).getValue_type() == 1) {
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.tv_content1.setText(list.get(position).getValue());
+                    holder.id_recorder_anim.setVisibility(View.GONE);
+                    holder.tv_content1.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_btn_whit));
+                    holder.id_recorder_time.setVisibility(View.GONE);
+                    holder.iv_icn1.setVisibility(View.GONE);
+                    holder.tv_content1.setVisibility(View.VISIBLE);
 
-                    } else if (list.get(position).getValue_type() == 2) {
-                        holder.tv_sym.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 2) {
+                    holder.tv_sym.setVisibility(View.GONE);
+                    if (SayListActivity.mIsListViewIdle) {//只有ListView处于空闲状态才能加载数据
                         holder.iv_icn1.setVisibility(View.VISIBLE);
                         holder.iv_icn1.setImageURL(list.get(position).getValue());
-                        holder.id_recorder_anim.setVisibility(View.GONE);
-                        holder.tv_content1.setVisibility(View.GONE);
-                        holder.id_recorder_time.setVisibility(View.GONE);
+                    }
+                    holder.id_recorder_anim.setVisibility(View.GONE);
+                    holder.tv_content1.setVisibility(View.GONE);
+                    holder.id_recorder_time.setVisibility(View.GONE);
 
 
-                    } else if (list.get(position).getValue_type() == 3) {
-                        String s = MediaMetadataRetriever.getRingDuring(list.get(position).getValue());
-                        int i = Integer.valueOf(s);
-                        i = i / 1000;
-                        holder.id_recorder_time.setText(i + "");
-                        holder.id_recorder_time.setVisibility(View.VISIBLE);
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.id_recorder_anim.setVisibility(View.VISIBLE);
-                        holder.tv_content1.setVisibility(View.GONE);
-                        holder.iv_icn1.setVisibility(View.GONE);
-                    } else if (list.get(position).getValue_type() == 4) {
-                        holder.tv_sym.setVisibility(View.GONE);
-                        holder.id_recorder_time.setVisibility(View.GONE);
-                        holder.iv_icn1.setVisibility(View.GONE);
-                        holder.tv_content1.setVisibility(View.VISIBLE);
-                        holder.id_recorder_anim.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 3) {
+                    String s = MediaMetadataRetriever.getRingDuring(list.get(position).getValue());
+                    int i = Integer.valueOf(s);
+                    i = i / 1000;
+                    holder.id_recorder_time.setText(i + "");
+                    holder.id_recorder_time.setVisibility(View.VISIBLE);
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.id_recorder_anim.setVisibility(View.VISIBLE);
+                    holder.tv_content1.setVisibility(View.GONE);
+                    holder.iv_icn1.setVisibility(View.GONE);
+                } else if (list.get(position).getValue_type() == 4) {
+                    holder.tv_sym.setVisibility(View.GONE);
+                    holder.id_recorder_time.setVisibility(View.GONE);
+                    holder.iv_icn1.setVisibility(View.GONE);
+                    holder.tv_content1.setVisibility(View.VISIBLE);
+                    holder.id_recorder_anim.setVisibility(View.GONE);
+                    if (SayListActivity.mIsListViewIdle) {//只有ListView处于空闲状态才能加载数据
                         if (list.get(position).getValue().contains("true")) {
                             holder.tv_content1.setText("");
                             holder.tv_content1.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.hong2));
@@ -190,23 +197,24 @@ public class SayListAdapter extends BaseAdapter {
                             holder.tv_content1.setText("");
                             holder.tv_content1.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.hong));
                         }
-                    } else if (list.get(position).getValue_type() == 5) {
-                        holder.id_recorder_time.setVisibility(View.GONE);
-                        holder.tv_sym.setVisibility(View.VISIBLE);
-                        holder.tv_sym.setText(list.get(position).getValue());
-                        holder.tv_content1.setVisibility(View.GONE);
-                        holder.id_recorder_anim.setVisibility(View.GONE);
                     }
+                } else if (list.get(position).getValue_type() == 5) {
+                    holder.id_recorder_time.setVisibility(View.GONE);
+                    holder.tv_sym.setVisibility(View.VISIBLE);
+                    holder.tv_sym.setText(list.get(position).getValue());
+                    holder.tv_content1.setVisibility(View.GONE);
+                    holder.id_recorder_anim.setVisibility(View.GONE);
                 }
+            }
 
-                holder.tv_name.setText(list.get(position).getSend_nick_name());
+            holder.tv_name.setText(list.get(position).getSend_nick_name());
+            if (SayListActivity.mIsListViewIdle) {//只有ListView处于空闲状态才能加载数据
                 holder.myiv_phot1.setImageURL(list.get(position).getSend_head_url());
                 holder.myiv_phot2.setImageURL(list.get(position).getSend_head_url());
-
+            }
 //        holder.tv_time.setText(position+"");
-                if (list.get(position).getCreate_time() != 0) {
-                    holder.tv_time.setText(TimeUtil.getStrTime(list.get(position).getCreate_time() + ""));
-                }
+            if (list.get(position).getCreate_time() != 0) {
+                holder.tv_time.setText(TimeUtil.getStrTime(list.get(position).getCreate_time() + ""));
             }
 
 
@@ -244,7 +252,7 @@ public class SayListAdapter extends BaseAdapter {
             holder.tv_content1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   if (list.get(position).getValue_type() == 4) {
+                    if (list.get(position).getValue_type() == 4) {
                         mOnopenListener.onopenListener(list.get(position).getValue_type(), list.get(position).getMessages_id(), list.get(position).isIs_me());
                     }
                 }

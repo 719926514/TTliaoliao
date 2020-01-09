@@ -11,12 +11,14 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -132,7 +134,7 @@ public class SayListActivity extends BaseActivity {
     MediaPlayer mediaPlayer = new MediaPlayer();
     private CommonSelectorDialog commonSelectorDialog;
     private boolean shuaxin = true;
-    public static boolean mIsListViewIdle;
+    public static boolean mIsListViewIdle= true;
     private ImageInfoObj imageInfoObj;
     private ImageWidgetInfoObj imageWidgetInfoObj;
     private Trycod trycod;
@@ -174,7 +176,6 @@ public class SayListActivity extends BaseActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        list.setPullRefreshEnable(true);
                         if (index < call.getData().getTotal_page()) {
                             index = index + 1;
 //                            Collections.reverse(listBean);
@@ -182,11 +183,11 @@ public class SayListActivity extends BaseActivity {
                             call(false);
                             onLoad();
                         } else {
-                            list.setPullRefreshEnable(false);
+
                         }
 
                     }
-                }, 1500);
+                }, 1000);
             }
 
             @Override
@@ -595,6 +596,7 @@ public class SayListActivity extends BaseActivity {
                     } else if (msg.contains("\"event_id\":10020")) {
                         call = gson.fromJson(msg, Call.class);
                         if (shuaxin) {
+                            list.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_CANCEL, 0, 0, 0));
                             listBean.clear();
                             index = 1;
                         } else {
@@ -603,12 +605,12 @@ public class SayListActivity extends BaseActivity {
                         if (msg.contains("array")) {
                             if (call.getData().getArray().size() > 0) {
                                 for (int i = 0; i < call.getData().getArray().size(); i++) {
-                                    listBean.add(0,call.getData().getArray().get(i));
+                                    listBean.add(0, call.getData().getArray().get(i));
                                 }
 //                                Collections.reverse(listBean);
                                 listViewAdapter3.notifyDataSetChanged();
                                 if (shuaxin) {
-                                    list.smoothScrollToPosition(list.getCount() - 1);
+                                    list.setSelection(listBean.size());
                                 }
                             }
                         }
@@ -636,7 +638,11 @@ public class SayListActivity extends BaseActivity {
 
     //获取聊天记录
     private void call(boolean s) {
+
         shuaxin = s;
+        if (s) {
+            index = 1;
+        }
         String json1 = "{\"event_id\":10020";
         String json22 = ",\"index\":" + index;
         String json23 = ",\"chat_type\":" + target_type;
